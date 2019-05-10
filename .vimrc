@@ -37,14 +37,27 @@ nnoremap <F3> :TlistToggle<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
 nnoremap <C-t> :cw <CR>
+nnoremap <C-c> <ESC>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" Autocomplete [{'"
+inoremap { {<CR>}<Esc>ko
+inoremap [ []<Esc>hi
+inoremap ( ()<Esc>hi
+inoremap " ""<Esc>hi
+inoremap ' ''<Esc>hi
+
 autocmd Filetype c      set omnifunc=ccomplete#Complete
 autocmd Filetype html   set omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype xml    set omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype tex    set omnifunc=syntaxcomplete#Complete
 autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
-autocmd FileType syntastic set norelativenumber
+ ""set dict+=/usr/share/dict/words
+
+au FileType text set dict+=/usr/share/dict/words
+au FileType tex set dict+=/usr/share/dict/words
+
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
 let NERDTreeWinPos= "right"
@@ -100,4 +113,6 @@ let g:ycm_auto_trigger = 1
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-set encoding=utf-8
+set spell 
+set spelllang=en_us 
+set complete+=k
