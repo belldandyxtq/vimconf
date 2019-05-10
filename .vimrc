@@ -56,8 +56,8 @@ autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
  ""set dict+=/usr/share/dict/words
 
-au FileType text set dict+=/usr/share/dict/words
-au FileType tex set dict+=/usr/share/dict/words
+au FileType text set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
+au FileType tex set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
 
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
@@ -73,7 +73,7 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
 let g:formatdef_CFormat = '"astyle --align-reference=name --align-pointer=name --mode=c --pad-header --style=allman --pad-oper"'
 let g:formatdef_javaFormat = '"astyle --style=attach --pad-oper"'
-let g:formatdef_PyFormat = '"autopep8.py -i"'
+let g:formatdef_PyFormat = '"autopep8 -i"'
 let g:formatters_cpp = ['CFormat']
 let g:formatters_c = ['CFormat']
 let g:formatters_cc = ['CFormat']
@@ -113,8 +113,4 @@ let g:ycm_global_ycm_extra_conf = '${HOME}/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-set spell 
-set spelllang=en_us 
-set complete+=k
 set encoding=utf-8
