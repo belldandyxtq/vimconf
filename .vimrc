@@ -15,6 +15,8 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
 Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'tpope/vim-eunuch'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 set history=1000
@@ -44,10 +46,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Autocomplete [{'"
 inoremap { {<CR>}<Esc>ko
-inoremap [ []<Esc>hi
-inoremap ( ()<Esc>hi
-inoremap " ""<Esc>hi
-inoremap ' ''<Esc>hi
+inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+
 
 autocmd Filetype c      set omnifunc=ccomplete#Complete
 autocmd Filetype html   set omnifunc=htmlcomplete#CompleteTags
@@ -55,7 +58,6 @@ autocmd Filetype xml    set omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype tex    set omnifunc=syntaxcomplete#Complete
 autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
- ""set dict+=/usr/share/dict/words
 
 au FileType text set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
 au FileType tex set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
