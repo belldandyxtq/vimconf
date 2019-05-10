@@ -1,6 +1,7 @@
 "installing plugin
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/taglist.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -116,3 +117,4 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 set spell 
 set spelllang=en_us 
 set complete+=k
+set encoding=utf-8
