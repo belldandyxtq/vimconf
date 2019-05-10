@@ -13,7 +13,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'Chiel92/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
 Plug 'rhysd/vim-grammarous'
-Plug 'Valloric/YouCompleteMe', {'do': 'python ./install.py --clang-completer'}
+Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
 set history=1000
