@@ -35,6 +35,7 @@ set omnifunc=syntaxcomplete
 nnoremap <F1> :set nu! rnu!<CR>:set foldcolumn=0<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TlistToggle<CR>
+noremap <F4> :Autoformat<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
 nnoremap <C-t> :cw <CR>
@@ -73,16 +74,14 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
 let g:formatdef_CFormat = '"astyle --align-reference=name --align-pointer=name --mode=c --pad-header --style=allman --pad-oper"'
 let g:formatdef_javaFormat = '"astyle --style=attach --pad-oper"'
-let g:formatdef_PyFormat = '"autopep8 -i"'
+let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
+let g:formatters_python = ['autopep8']
 let g:formatters_cpp = ['CFormat']
 let g:formatters_c = ['CFormat']
 let g:formatters_cc = ['CFormat']
 let g:formatters_java = ['javaFormat']
-let g:formatters_python = ['PyFormat']
 set tabstop=4
 set shiftwidth=4
-
-noremap <F5> :Autoformat<CR>
 
 set background=dark
 colorscheme solarized
