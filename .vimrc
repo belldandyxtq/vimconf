@@ -17,6 +17,7 @@ Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 call plug#end()
 
 set history=1000
@@ -59,8 +60,8 @@ autocmd Filetype tex    set omnifunc=syntaxcomplete#Complete
 autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
 
-au FileType text set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
-au FileType tex set dict+=/usr/share/dict/words spell spelllang=en_us complete+=k
+au FileType tex,text setlocal dict+=/usr/share/dict/words
+au FileType tex,text setlocal spell spelllang=en_us complete+=k
 
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
@@ -74,7 +75,7 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_SingleClick= 1 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
-let g:formatdef_CFormat = '"astyle --align-reference=name --align-pointer=name --mode=c --pad-header --style=allman --pad-oper"'
+let g:formatdef_CFormat = '"astyle --align-reference=name --align-pointer=name --mode=c --pad-header --style=google"'
 let g:formatdef_javaFormat = '"astyle --style=attach --pad-oper"'
 let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
@@ -118,3 +119,13 @@ set encoding=utf-8
 
 set cursorline
 set scrolloff=10
+
+" You complete Me config
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_python_binary_path = "python"
+
+hi clear SpellBad
+hi SpellBad cterm=underline
+highlight SpellBad ctermfg=009
