@@ -19,6 +19,7 @@ Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 set history=1000
@@ -77,7 +78,7 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_SingleClick= 1 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
-let g:formatdef_CFormat = '"astyle --align-reference=name --align-pointer=name --mode=c --pad-header --style=google"'
+let g:formatdef_CFormat = '"astyle -style=google --align-reference=name --align-pointer=name --mode=c --pad-header -"'
 let g:formatdef_javaFormat = '"astyle --style=attach --pad-oper"'
 let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
@@ -143,3 +144,9 @@ let g:ycm_semantic_triggers =  {
   \   'cpp,cuda': ['->', '.', '::'],
   \   'java,javascript,python': ['.']}
 set splitbelow
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
