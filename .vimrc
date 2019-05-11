@@ -106,7 +106,7 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_cpp_checkers = ['g++']
 let g:syntastic_c_checkers = ['gcc']
 
-let b:ale_linters = ['pyflakes', 'flake8', 'pylint']
+let b:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
