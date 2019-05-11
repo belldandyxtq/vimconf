@@ -61,9 +61,9 @@ autocmd Filetype tex    set omnifunc=syntaxcomplete#Complete
 autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
 
-au FileType tex,text setlocal dict+=/usr/share/dict/words
-au FileType tex,text setlocal spell spelllang=en_us complete+=k
-au filetype c,cc inoremap { {<CR>}<Esc>ko
+set dict+=/usr/share/dict/words
+set spell spelllang=en_us complete+=k
+au filetype c,cpp inoremap { {<CR>}<Esc>ko
 
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
