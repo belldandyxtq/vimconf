@@ -22,7 +22,7 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/Align'
 Plug 'ctrlpvim/ctrlp.vim'
-
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 set history=1000
@@ -48,6 +48,7 @@ nnoremap <F5> :CtrlP<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
 noremap <C-t> :cw <CR>
+nnoremap <C-]> g<C-]> 
 
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -58,6 +59,21 @@ inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap { {}<Esc>i
 
+function! Enable_dictionary_completion()
+	set dict+=/usr/share/dict/words
+	set spell 
+	set spelllang=en_us
+	set complete+=k
+endfunction
+
+function! Disable_dictionary_completion()
+	set dict&
+	set spell&
+	set spelllang&
+	set complete&
+endfunction
+
+call Enable_dictionary_completion()
 
 autocmd Filetype c      set omnifunc=ccomplete#Complete
 autocmd Filetype html   set omnifunc=htmlcomplete#CompleteTags
@@ -65,10 +81,8 @@ autocmd Filetype xml    set omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype tex    set omnifunc=syntaxcomplete#Complete
 autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
-
-set dict+=/usr/share/dict/words
-set spell spelllang=en_us complete+=k
-au filetype c,cpp inoremap { {<CR>}<Esc>ko
+autocmd filetype c,cpp inoremap { {<CR>}<Esc>ko
+autocmd filetype c,cpp,python,java call Disable_dictionary_completion()
 
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
@@ -107,7 +121,7 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_cpp_checkers = ['g++']
 let g:syntastic_c_checkers = ['gcc']
 
@@ -116,9 +130,6 @@ let b:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
 
 set encoding=utf-8
 
@@ -140,14 +151,15 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_python_binary_path = "python"
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_auto_trigger = 1
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" "let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1,  'python': 1 }
+let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1,  'python': 1 }
 let g:ycm_semantic_triggers =  {
   \   'c': ['->', '.'],
   \   'cpp,cuda': ['->', '.', '::'],
   \   'java,javascript,python': ['.']}
 set splitbelow
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -157,3 +169,5 @@ nmap ga <Plug>(EasyAlign)
 
 set termwinsize=7x0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" disable deletion on the autoindent, but allow delete old words and start
+set backspace=eol,start
