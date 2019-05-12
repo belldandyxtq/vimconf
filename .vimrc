@@ -44,7 +44,6 @@ nnoremap <F1> :set nu! rnu!<CR>:set foldcolumn=0<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TlistToggle<CR>
 nnoremap <F4> :Autoformat<CR>
-nnoremap <F5> :CtrlP<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
 noremap <C-t> :cw <CR>
