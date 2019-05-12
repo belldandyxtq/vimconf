@@ -40,13 +40,12 @@ set incsearch
 set ai
 set si
 set omnifunc=syntaxcomplete
-nnoremap <F1> :set nu! rnu!<CR>:set foldcolumn=0<CR>
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :TlistToggle<CR>
-nnoremap <F4> :Autoformat<CR>
+nnoremap <C-i> :set nu! rnu!<CR>:set foldcolumn=0<CR>
+nnoremap <C-w> :NERDTreeToggle<CR>
+nnoremap <C-t> :TlistToggle<CR>
+nnoremap <C-a> :Autoformat<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
-noremap <C-t> :cw <CR>
 nnoremap <C-]> g<C-]> 
 
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
