@@ -20,6 +20,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/Align'
+Plug 'ctrlpvim/ctrlp.vim'
+
 call plug#end()
 
 set history=1000
@@ -40,11 +43,12 @@ set omnifunc=syntaxcomplete
 nnoremap <F1> :set nu! rnu!<CR>:set foldcolumn=0<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TlistToggle<CR>
-noremap <F4> :Autoformat<CR>
+nnoremap <F4> :Autoformat<CR>
+nnoremap <F5> :CtrlP<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
-nnoremap <C-t> :cw <CR>
-nnoremap <C-c> <ESC>
+noremap <C-t> :cw <CR>
+
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Autocomplete [{'"
@@ -150,3 +154,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+set termwinsize=7x0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
