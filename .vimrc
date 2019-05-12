@@ -87,13 +87,13 @@ autocmd filetype c,cpp,python,java call Disable_dictionary_completion()
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
 let NERDTreeWinPos= "right"
-let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrows = 1
 let Tlist_Auto_Open = 0
-let Tlist_Use_Right_Window=0
-let Tlist_Show_One_File=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_SingleClick= 1 
+let Tlist_Use_Right_Window = 0
+let Tlist_Show_One_File = 1
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_SingleClick = 1 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
 let g:formatdef_CFormat = '"astyle -style=google --align-reference=name --align-pointer=name --mode=c --pad-header -"'
@@ -117,7 +117,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
@@ -168,6 +168,10 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 set termwinsize=7x0
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 " disable deletion on the autoindent, but allow delete old words and start
 set backspace=eol,start
+
+" ctrlp setting
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_map='<c-e>'
