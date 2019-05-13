@@ -41,7 +41,7 @@ set ai
 set si
 set omnifunc=syntaxcomplete
 nnoremap <C-i> :set nu! rnu!<CR>:set foldcolumn=0<CR>
-nnoremap <C-w> :NERDTreeToggle<CR>
+nnoremap <C-d> :NERDTreeToggle<CR>
 nnoremap <C-t> :TlistToggle<CR>
 nnoremap <C-a> :Autoformat<CR>
 nnoremap <C-n> :cn <CR>
