@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/Align'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 set history=1000
@@ -79,6 +80,7 @@ autocmd FileType nerdtree set norelativenumber
 autocmd FileType taglist set norelativenumber
 autocmd filetype c,cpp inoremap { {<CR>}<Esc>ko
 autocmd filetype c,cpp,python,java call Disable_dictionary_completion()
+autocmd filetype c,cpp,python,java setlocal completeopt-=preview
 
 set omnifunc=syntaxcomplete
 let NERDTreeQuitOnOpen = 1
@@ -107,19 +109,6 @@ set background=dark
 colorscheme solarized
 let g:lightline = { 'colorscheme': 'solarized' }
 set laststatus=2
-
-""" syntastic setting
-""set statusline+=%#warningmsg#
-""set statusline+=%{SyntasticStatuslineFlag()}
-""set statusline+=%*
-""
-""let g:syntastic_always_populate_loc_list = 1
-""let g:syntastic_auto_loc_list = 1
-""let g:syntastic_check_on_open = 0
-""let g:syntastic_check_on_wq = 0
-""let g:syntastic_python_checkers = ['flake8']
-""let g:syntastic_cpp_checkers = ['g++']
-""let g:syntastic_c_checkers = ['gcc']
 
 let g:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
 
@@ -163,8 +152,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-set termwinsize=7x0
-
 " disable deletion on the autoindent, but allow delete old words and start
 set backspace=eol,start
 
@@ -186,3 +173,5 @@ endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>/<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
+
+
