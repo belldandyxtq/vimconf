@@ -13,7 +13,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/errormarker.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Chiel92/vim-autoformat'
-Plug 'vim-syntastic/syntastic'
 Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-eunuch'
@@ -22,7 +21,6 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/Align'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 set history=1000
@@ -110,20 +108,20 @@ colorscheme solarized
 let g:lightline = { 'colorscheme': 'solarized' }
 set laststatus=2
 
-" syntastic setting
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""" syntastic setting
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
+""
+""let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+""let g:syntastic_check_on_open = 0
+""let g:syntastic_check_on_wq = 0
+""let g:syntastic_python_checkers = ['flake8']
+""let g:syntastic_cpp_checkers = ['g++']
+""let g:syntastic_c_checkers = ['gcc']
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_cpp_checkers = ['g++']
-let g:syntastic_c_checkers = ['gcc']
-
-let b:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
+let g:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -173,3 +171,18 @@ set backspace=eol,start
 " ctrlp setting
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_map='<c-e>'
+
+" vsearch.vim
+" Visual mode search
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  " Use this line instead of the above to match matches spanning across lines
+  "let @/ = '\V' . substitute(escape(@@, '\'), '\_s\+', '\\_s\\+', 'g')
+  call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>/<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
