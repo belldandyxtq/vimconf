@@ -22,6 +22,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/Align'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 set history=1000
@@ -94,7 +95,7 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
-let g:formatdef_CFormat = '"astyle -style=google --align-reference=name --align-pointer=name --mode=c --pad-header -"'
+let g:formatdef_CFormat = '"astyle --style=google --align-reference=name --align-pointer=name --mode=c --pad-header"'
 let g:formatdef_javaFormat = '"astyle --style=attach --pad-oper"'
 let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
@@ -174,4 +175,4 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>/<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 
-
+cabbrev Ack Ack!
