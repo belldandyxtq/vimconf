@@ -175,4 +175,6 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>/<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 
-cabbrev Ack Ack!
+" Ack.vim setting
+cabbrev A Ack!
+let g:ackprg = 'ag --nogroup --nocolor --column'
