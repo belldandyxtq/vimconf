@@ -23,6 +23,7 @@ Plug 'vim-scripts/Align'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'mileszs/ack.vim'
+Plug 'lambdalisue/vim-pyenv'
 call plug#end()
 
 set history=1000
@@ -112,6 +113,7 @@ let g:lightline = { 'colorscheme': 'solarized' }
 set laststatus=2
 
 let g:ale_linters = {'python': ['flake8'], 'c': ['gcc'], 'cpp': ['g++']}
+let g:ale_completion_enabled = 1
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -145,7 +147,7 @@ let g:ycm_semantic_triggers =  {
 set splitbelow
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%80v.\+/
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -154,7 +156,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " disable deletion on the autoindent, but allow delete old words and start
-set backspace=eol,start
+set backspace=eol,start,indent
 
 " ctrlp setting
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
