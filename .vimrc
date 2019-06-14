@@ -24,6 +24,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'mileszs/ack.vim'
 Plug 'lambdalisue/vim-pyenv'
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 set history=1000
