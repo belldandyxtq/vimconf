@@ -42,13 +42,21 @@ set incsearch
 set ai
 set si
 set omnifunc=syntaxcomplete
-nnoremap <C-i> :set nu! rnu!<CR>:set foldcolumn=0<CR>
+
+function! SideToggle()
+	:GitGutterToggle
+	:ALEToggle
+	:set nu! rnu!
+	:set foldcolumn=0
+endfunction
+
 nnoremap <C-d> :NERDTreeToggle<CR>
 nnoremap <C-t> :TlistToggle<CR>
 nnoremap <C-a> :Autoformat<CR>
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cN <CR>
 nnoremap <C-]> g<C-]> 
+nnoremap <tab> :call SideToggle()<CR>
 
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
