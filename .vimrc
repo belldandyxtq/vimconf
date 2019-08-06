@@ -115,6 +115,7 @@ let g:formatters_c = ['CFormat']
 let g:formatters_cc = ['CFormat']
 let g:formatters_java = ['javaFormat']
 set tabstop=4
+set expandtab
 set shiftwidth=4
 
 set background=dark
