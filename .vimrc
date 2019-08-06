@@ -66,6 +66,7 @@ inoremap ( ()<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap { {}<Esc>i
+inoremap <C-c> <Esc>
 
 function! Enable_dictionary_completion()
 	set dict+=/usr/share/dict/words
