@@ -44,10 +44,11 @@ set si
 set omnifunc=syntaxcomplete
 
 function! SideToggle()
-	:GitGutterToggle
-	:ALEToggle
-	:set nu! rnu!
-	:set foldcolumn=0
+:GitGutterToggle
+:ALEToggle
+:set nu! rnu!
+:set list!
+:set foldcolumn=0
 endfunction
 
 nnoremap <C-d> :NERDTreeToggle<CR>
@@ -117,6 +118,7 @@ let g:formatters_java = ['javaFormat']
 set tabstop=4
 set expandtab
 set shiftwidth=4
+set list
 
 set background=dark
 colorscheme solarized
@@ -191,3 +193,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 " Ack.vim setting
 cabbrev A Ack!
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" jedi setting
+let g:jedi#show_call_signatures = 2
