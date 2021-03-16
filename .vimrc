@@ -1,6 +1,6 @@
 "installing plugin
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'vim-scripts/taglist.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -122,6 +122,7 @@ set list
 
 set background=dark
 colorscheme solarized
+hi Terminal ctermfg=blue guibg=lightgrey guifg=blue
 let g:lightline = { 'colorscheme': 'solarized' }
 set laststatus=2
 
