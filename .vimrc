@@ -35,6 +35,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'lambdalisue/vim-pyenv'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 set history=1000
@@ -61,6 +62,8 @@ function! SideToggle()
 let g:indentLine_char = '┆'
 :set foldcolumn=0
 endfunction
+colorscheme gruvbox
+set background=dark
 let g:ale_completion_enabled = 0
 let g:ale_linters = {
             \ 'python': ['flake8'],
@@ -156,7 +159,7 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 
 " jedi setting
 let g:jedi#show_call_signatures = 2
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_document_highlight_enabled = 0
 if executable('pylsp')
     " pip install python-lsp-server
@@ -188,6 +191,8 @@ augroup lsp_install
     au!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    let g:lsp_diagnostics_echo_cursor = 0
+    let g:lsp_diagnostics_virtual_text_enabled = 0
 augroup END
 
 let g:ale_linters = {
@@ -204,8 +209,15 @@ let g:ale_fix_on_save = 1
 let g:ale_mypy_options = '--line-length 120'
 
 autocmd ColorScheme * highlight ALEVirtualTextError guifg=#FF0000 guibg=#ECEC53
+autocmd ColorScheme * highlight ALEError guifg=#FF0000 guibg=#ECEC53
 autocmd ColorScheme * highlight ALEVirtualTextWarning guifg=#38ff38 guibg=#318ce7
-highlight Pmenu ctermbg=gray guibg=gray
+highlight Pmenu ctermbg=yellow guibg=yellow
 
-
-let g:deoplete#enable_at_startup = 0
+" Set the error text to be red
+highlight ALEErrorText guifg=#ff0000 ctermfg=red
+" Set the warning text to be yellow
+highlight ALEWarningText guifg=#ffff00 ctermfg=yellow
+let g:deoplete#enable_at_startup = 1
+hi SpellBad cterm=underline ctermfg=red ctermbg=NONE
+hi ALEError cterm=underline ctermfg=red ctermbg=NONE
+highlight ALEVirtualTextError ctermfg=red
