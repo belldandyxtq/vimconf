@@ -9,7 +9,6 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/errormarker.vim'
-Plug 'Chiel92/vim-autoformat'
 Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-eunuch'
@@ -31,9 +30,13 @@ Plug 'dense-analysis/ale' " Asynchronous Lint Engine (uses vim-lsp)
 Plug 'sheerun/vim-polyglot' " syntax highlighting for all
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'lambdalisue/vim-pyenv'
 Plug 'morhetz/gruvbox'
 call plug#end()
@@ -53,14 +56,15 @@ set incsearch
 set ai
 set si
 set omnifunc=syntaxcomplete
+let g:indentLine_char = '┆'
 
 function! SideToggle()
 :GitGutterToggle
-:ALEToggle
 :set nu! rnu!
 :set list!
-let g:indentLine_char = '┆'
 :set foldcolumn=0
+:IndentLinesToggle
+
 endfunction
 colorscheme gruvbox
 set background=dark
@@ -159,7 +163,7 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 
 " jedi setting
 let g:jedi#show_call_signatures = 2
-let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_highlight_enabled = 0
 if executable('pylsp')
     " pip install python-lsp-server
@@ -205,19 +209,21 @@ let g:ale_fixers = {
             \   'javascript': ['eslint'],
             \}
 
+let g:ale_completion_enabled = 0
 let g:ale_fix_on_save = 1
 let g:ale_mypy_options = '--line-length 120'
 
 autocmd ColorScheme * highlight ALEVirtualTextError guifg=#FF0000 guibg=#ECEC53
 autocmd ColorScheme * highlight ALEError guifg=#FF0000 guibg=#ECEC53
 autocmd ColorScheme * highlight ALEVirtualTextWarning guifg=#38ff38 guibg=#318ce7
-highlight Pmenu ctermbg=yellow guibg=yellow
+"highlight Pmenu ctermbg=yellow guibg=yellow
 
 " Set the error text to be red
 highlight ALEErrorText guifg=#ff0000 ctermfg=red
 " Set the warning text to be yellow
 highlight ALEWarningText guifg=#ffff00 ctermfg=yellow
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 hi SpellBad cterm=underline ctermfg=red ctermbg=NONE
 hi ALEError cterm=underline ctermfg=red ctermbg=NONE
 highlight ALEVirtualTextError ctermfg=red
+let g:deoplete#enable_at_startup = 1
