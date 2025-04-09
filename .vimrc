@@ -30,13 +30,6 @@ Plug 'dense-analysis/ale' " Asynchronous Lint Engine (uses vim-lsp)
 Plug 'sheerun/vim-polyglot' " syntax highlighting for all
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 Plug 'lambdalisue/vim-pyenv'
 Plug 'morhetz/gruvbox'
 call plug#end()
@@ -209,7 +202,7 @@ let g:ale_fixers = {
             \   'javascript': ['eslint'],
             \}
 
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_mypy_options = '--line-length 120'
 
@@ -226,4 +219,3 @@ highlight ALEWarningText guifg=#ffff00 ctermfg=yellow
 hi SpellBad cterm=underline ctermfg=red ctermbg=NONE
 hi ALEError cterm=underline ctermfg=red ctermbg=NONE
 highlight ALEVirtualTextError ctermfg=red
-let g:deoplete#enable_at_startup = 1
